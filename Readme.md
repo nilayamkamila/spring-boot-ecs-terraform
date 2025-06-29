@@ -19,7 +19,8 @@ docker run -p 8080:8080 my-spring-app:latest
 
 # How to Push to ECR
 - Check if ECR repository exists, if not create it:
-```aws ecr create-repository --repository-name docker-artifact-hub/my-spring-app
+```
+aws ecr create-repository --repository-name docker-artifact-hub/my-spring-app
 ```
 - Authenticate Docker and Push to ECR:
 ```
