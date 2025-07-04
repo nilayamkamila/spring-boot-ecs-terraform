@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.Date;
 
 @RestController
 public class PurchaseController {
@@ -20,9 +21,9 @@ public class PurchaseController {
 
     @GetMapping("/hello")
     public String hello() {
-        logger.info("Received request for /hello endpoint :{}",
-                System.currentTimeMillis() / 1000L);
-        return "Hello from Spring Boot on ECS!";
+        logger.info("Received request for /hello endpoint on Date{}:{}",
+                System.currentTimeMillis() / 1000L, new Date());
+        return "Hello from Spring Boot on ECS! Today's Date is " + new Date() + " and the time is " + System.currentTimeMillis() / 1000L + " seconds since epoch.";
     }
 
     @GetMapping("/purchase")
@@ -30,7 +31,7 @@ public class PurchaseController {
         final Faker faker = new Faker();
         final Random random = new Random();
         Purchase purchase = new Purchase();
-        purchase.setPurchaseId("TXN-" + faker.number().digits(6));
+        purchase.setPurchaseId("TMN-" + faker.number().digits(6));
         purchase.setCustomerName(faker.name().fullName());
         purchase.setDate(faker.date().birthday().toInstant().toString());
 

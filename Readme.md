@@ -13,9 +13,15 @@ mvn clean install
 ```
 mvn --version
 mvn clean install
-docker buildx build --platform linux/amd64 -t my-spring-app:latest .
+docker buildx build -t my-spring-app:latest .
 docker run -p 8080:8080 my-spring-app:latest
+
 ```
+#Note: If you use for ECS build, please follow the below command
+```
+docker buildx build --platform linux/amd64 -t my-spring-app:latest .
+```
+
 
 # How to Push to ECR
 - Check if ECR repository exists, if not create it:
